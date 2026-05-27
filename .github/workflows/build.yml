@@ -1,0 +1,65 @@
+name: Build IndieGuitarFX VST3
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: C:\JUCE
+          key: juce-7.0.9
+
+      - name: Download JUCE 7.0.9
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          Write-Host "Downloading JUCE 7.0.9..."
+          Invoke-WebRequest -Uri "https://github.com/juce-framework/JUCE/archive/refs/tags/7.0.9.zip" `
+            -OutFile "juce.zip" -UseBasicParsing
+          Expand-Archive -Path "juce.zip" -DestinationPath "C:\" -Force
+          Rename-Item "C:\JUCE-7.0.9" "C:\JUCE"
+          Write-Host "JUCE ready at C:\JUCE"
+
+      - name: Configure with CMake
+        shell: cmd
+        run: |
+          mkdir build
+          cmake -S . -B build ^
+            -G "Visual Studio 17 2022" ^
+            -A x64 ^
+            -DCMAKE_PREFIX_PATH="C:\JUCE" ^
+            -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build VST3
+        shell: cmd
+        run: |
+          cmake --build build --config Release --parallel 4
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: IndieGuitarFX-VST3-Windows
+          path: build/**/*.vst3
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: "IndieGuitarFX v1.0.${{ github.run_number }}"
+          body: "Готовый VST3 плагин для Windows. Скопируй IndieGuitarFX.vst3 в C:\\Program Files\\Common Files\\VST3\\"
+          files: build/**/*.vst3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
