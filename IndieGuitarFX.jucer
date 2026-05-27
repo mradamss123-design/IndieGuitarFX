@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="IndieGuitarFX"
+              name="IndieGuitarFX"
+              projectType="audioplug"
+              version="1.0.0"
+              bundleIdentifier="com.indiestudio.IndieGuitarFX"
+              companyName="IndieStudio"
+              companyCopyright="2024 IndieStudio"
+              companyWebsite=""
+              companyEmail=""
+              pluginName="IndieGuitarFX"
+              pluginDesc="Guitar FX for indie rock and indie pop"
+              pluginManufacturerCode="IStu"
+              pluginCode="IGFX"
+              pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginCharacteristics="Plugin is an effect"
+              pluginIsSynth="0"
+              pluginWantsMidiInput="0"
+              pluginProducesMidiOutput="0"
+              pluginIsMidiEffectPlugin="0"
+              pluginEditorRequiresKeys="0"
+              pluginVST3Category="Fx,Distortion"
+              VST3_SDK_Folder=""
+              buildVST="0"
+              buildVST3="1"
+              buildAU="0"
+              buildAUv3="0"
+              buildAAX="0"
+              buildStandalone="1"
+              enableIAA="0">
+
+  <MAINGROUP id="IndieGuitarFX" name="IndieGuitarFX">
+    <GROUP id="{source}" name="Source">
+      <FILE id="PluginProcessor_cpp" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="PluginProcessor_h" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="PluginEditor_cpp" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="PluginEditor_h" name="PluginEditor.h" compile="0" resource="0"
+            file="Source/PluginEditor.h"/>
+      <GROUP id="{dsp}" name="DSP">
+        <FILE id="Overdrive_cpp" name="Overdrive.cpp" compile="1" resource="0"
+              file="Source/DSP/Overdrive.cpp"/>
+        <FILE id="Overdrive_h" name="Overdrive.h" compile="0" resource="0"
+              file="Source/DSP/Overdrive.h"/>
+        <FILE id="Chorus_cpp" name="Chorus.cpp" compile="1" resource="0"
+              file="Source/DSP/Chorus.cpp"/>
+        <FILE id="Chorus_h" name="Chorus.h" compile="0" resource="0"
+              file="Source/DSP/Chorus.h"/>
+        <FILE id="Reverb_cpp" name="Reverb.cpp" compile="1" resource="0"
+              file="Source/DSP/Reverb.cpp"/>
+        <FILE id="Reverb_h" name="Reverb.h" compile="0" resource="0"
+              file="Source/DSP/Reverb.h"/>
+        <FILE id="Delay_cpp" name="Delay.cpp" compile="1" resource="0"
+              file="Source/DSP/Delay.cpp"/>
+        <FILE id="Delay_h" name="Delay.h" compile="0" resource="0"
+              file="Source/DSP/Delay.h"/>
+        <FILE id="Compressor_cpp" name="Compressor.cpp" compile="1" resource="0"
+              file="Source/DSP/Compressor.cpp"/>
+        <FILE id="Compressor_h" name="Compressor.h" compile="0" resource="0"
+              file="Source/DSP/Compressor.h"/>
+        <FILE id="EQ_cpp" name="EQ.cpp" compile="1" resource="0"
+              file="Source/DSP/EQ.cpp"/>
+        <FILE id="EQ_h" name="EQ.h" compile="0" resource="0"
+              file="Source/DSP/EQ.h"/>
+        <FILE id="ToneAnalyzer_cpp" name="ToneAnalyzer.cpp" compile="1" resource="0"
+              file="Source/DSP/ToneAnalyzer.cpp"/>
+        <FILE id="ToneAnalyzer_h" name="ToneAnalyzer.h" compile="0" resource="0"
+              file="Source/DSP/ToneAnalyzer.h"/>
+      </GROUP>
+      <GROUP id="{gui}" name="GUI">
+        <FILE id="KnobLAF_cpp" name="KnobLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/GUI/KnobLookAndFeel.cpp"/>
+        <FILE id="KnobLAF_h" name="KnobLookAndFeel.h" compile="0" resource="0"
+              file="Source/GUI/KnobLookAndFeel.h"/>
+        <FILE id="EffectStrip_cpp" name="EffectStrip.cpp" compile="1" resource="0"
+              file="Source/GUI/EffectStrip.cpp"/>
+        <FILE id="EffectStrip_h" name="EffectStrip.h" compile="0" resource="0"
+              file="Source/GUI/EffectStrip.h"/>
+        <FILE id="TonePanel_cpp" name="ToneAnalyzerPanel.cpp" compile="1" resource="0"
+              file="Source/GUI/ToneAnalyzerPanel.cpp"/>
+        <FILE id="TonePanel_h" name="ToneAnalyzerPanel.h" compile="0" resource="0"
+              file="Source/GUI/ToneAnalyzerPanel.h"/>
+        <FILE id="Spectrum_cpp" name="SpectrumAnalyzer.cpp" compile="1" resource="0"
+              file="Source/GUI/SpectrumAnalyzer.cpp"/>
+        <FILE id="Spectrum_h" name="SpectrumAnalyzer.h" compile="0" resource="0"
+              file="Source/GUI/SpectrumAnalyzer.h"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+
+  <MODULES>
+    <MODULE id="juce_audio_basics"        showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices"       showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats"       showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors"    showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils"         showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core"                showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures"     showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp"                 showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events"              showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics"            showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics"          showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra"           showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATION name="Debug"
+                     isDebug="1"
+                     optimisation="1"
+                     targetName="IndieGuitarFX"
+                     headerPath=""
+                     libraryPath=""/>
+      <CONFIGURATION name="Release"
+                     isDebug="0"
+                     optimisation="3"
+                     targetName="IndieGuitarFX"
+                     headerPath=""
+                     libraryPath=""/>
+    </VS2022>
+  </EXPORTFORMATS>
+
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
+
+</JUCERPROJECT>
